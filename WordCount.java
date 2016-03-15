@@ -21,8 +21,8 @@ public class WordCount
 		{
       			scan = null;
     		}
-		Hashtable<String, int> source = new Hashtable<String, int>();
-		HashMap<String, int> map = new HashMap<String, int>();
+		Hashtable<String, Integer> source = new Hashtable<String, Integer>();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
     		// process the file, token by token
     		int i = 0;
     		while(scan.hasNext())
