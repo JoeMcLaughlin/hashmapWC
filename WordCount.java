@@ -7,16 +7,31 @@ public class WordCount
 {
 	public static void main(String[] args)
 	{
-		java.util.Scanner sc = new java.util.Scanner(System.in);
-		tokenCount(sc.nextLine());
+		
+		System.out.print("Please enter file(s):");
+		//try
+		//{
+			java.util.Scanner sc = new java.util.Scanner(System.in);
+		//}catch(Exception e){
+//			System.out.println("Sorry you did something wrong");
+		//}
+		
+//		while(sc.hasNext()){
+			tokenCount(sc.nextLine());
+//System.out.println(sc);
+			
+//		}
 	}
 	public static void tokenCount(String filename)
 	{
     		java.util.Scanner scan;
+		java.util.Scanner files = new java.util.Scanner(filename);
+while(files.hasNext()){
+	String file = files.next();
 		// open the file for reading using Scanner
    		try
 		{
-     			scan = new java.util.Scanner(new java.io.File(filename));
+     			scan = new java.util.Scanner(new java.io.File(file));
 	   	} catch(java.io.FileNotFoundException e) 
 		{
       			scan = null;
@@ -75,7 +90,7 @@ To get a newline %n is used. Note that the characters are surrounded with double
 After a comma, you type the text that you want formatting. The first comma in the code above separates the format specification from the text being formatted.
 	*/
   	}
-
+}
 private static class Counter{
 		int count;
 		public Counter(){
