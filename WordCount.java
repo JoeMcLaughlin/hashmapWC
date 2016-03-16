@@ -21,25 +21,27 @@ public class WordCount
 		{
       			scan = null;
     		}
-		Hashtable<String, Integer> source = new Hashtable<String, Integer>();
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
+//		Hashtable<String, Integer> source = new Hashtable<String, Integer>();
+		HashMap<String, Counter> map = new HashMap<String, Counter>();
     		// process the file, token by token
-    		int i = 0;
+		//Counter ct = new Counter();
+		int i = 0;
     		while(scan.hasNext())
 		{
       			String token = scan.next().toLowerCase();
 			if(map.get(token) != null)
 			{
-				map.put(token,(map.get(token)+1));
+				map.get(token).increment();
+				map.put(token, map.get(token));
 			}else{
-				map.put(token, 1);
+				map.put(token, new Counter());
 			}
 			//if map is not empty...
 			//check if token exists
 			//if not add to hashmap
 			//if it does get value at current key(token)
 			// increment value at current key(token)
-      			i ++;
+			i ++;
     		}
 		Iterator<String> keySetIterator = map.keySet().iterator();
     		// close the file
@@ -50,9 +52,9 @@ public class WordCount
 	        while(keySetIterator.hasNext())
 		{
                 	String key = keySetIterator.next();
-			if(map.get(key) >2)
+			if(map.get(key).count >2)
 			{
-				System.out.printf("%4s", map.get(key));
+				System.out.printf("%4s", map.get(key).count);
                        		System.out.println(" : " + key );
 			}
                 }
@@ -72,5 +74,19 @@ To get a right-justified column the same sequence of characters are used, except
 To get a newline %n is used. Note that the characters are surrounded with double quotes.
 After a comma, you type the text that you want formatting. The first comma in the code above separates the format specification from the text being formatted.
 	*/
-  }
+  	}
+
+private static class Counter{
+		int count;
+		public Counter(){
+			count = 1;
+		}
+		private int returnCount(){
+			return count;
+		}
+		void increment(){
+			count++;
+		}
+	}
+
 }
